@@ -1,0 +1,198 @@
+{
+  "version": "0.1.0",
+  "name": "gift_protocol",
+  "instructions": [
+    {
+      "name": "initialize",
+      "accounts": [
+        {
+          "name": "admin",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "protocolState",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "treasury",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "commissionRate",
+          "type": "u16"
+        },
+        {
+          "name": "referralRate",
+          "type": "u16"
+        }
+      ]
+    },
+    {
+      "name": "updateCommissionRates",
+      "accounts": [
+        {
+          "name": "admin",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
+          "name": "protocolState",
+          "isMut": true,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "commissionRate",
+          "type": "u16"
+        },
+        {
+          "name": "referralRate",
+          "type": "u16"
+        }
+      ]
+    },
+    {
+      "name": "createReferral",
+      "accounts": [
+        {
+          "name": "referrer",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "referralAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "protocolState",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "payReferralReward",
+      "accounts": [
+        {
+          "name": "payer",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "referrer",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "referralAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "treasury",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "protocolState",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "amount",
+          "type": "u64"
+        }
+      ]
+    }
+  ],
+  "accounts": [
+    {
+      "name": "ProtocolState",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "admin",
+            "type": "publicKey"
+          },
+          {
+            "name": "treasury",
+            "type": "publicKey"
+          },
+          {
+            "name": "commissionRate",
+            "type": "u16"
+          },
+          {
+            "name": "referralRate",
+            "type": "u16"
+          },
+          {
+            "name": "totalGiftCards",
+            "type": "u64"
+          },
+          {
+            "name": "totalCollected",
+            "type": "u64"
+          },
+          {
+            "name": "totalReferrers",
+            "type": "u64"
+          },
+          {
+            "name": "totalReferralPaid",
+            "type": "u64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "ReferralAccount",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "referrer",
+            "type": "publicKey"
+          },
+          {
+            "name": "totalEarned",
+            "type": "u64"
+          },
+          {
+            "name": "referrals",
+            "type": "u64"
+          }
+        ]
+      }
+    }
+  ],
+  "metadata": {
+    "address": "GiFtpLZbmQcu4LPYoFg2ZX5he7qeXXdXiNVzQ5Lm24R1"
+  }
+} 

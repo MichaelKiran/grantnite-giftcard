@@ -1,0 +1,347 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap');
+
+:root {
+  /* Base colors */
+  --foreground: 255, 255, 255;
+  --background: 0, 0, 0;
+  --background-secondary: 16, 16, 16;
+  
+  /* Component colors */
+  --primary: 0, 255, 170;  /* Neon green */
+  --primary-foreground: 0, 0, 0;
+  --secondary: 0, 183, 255; /* Neon blue */
+  --secondary-foreground: 255, 255, 255;
+  --accent: 255, 0, 128;   /* Neon pink/red */
+  --accent-foreground: 0, 0, 0;
+  --destructive: 255, 78, 78;
+  --destructive-foreground: 0, 0, 0;
+  
+  /* UI elements */
+  --card: 16, 16, 16;
+  --card-foreground: 255, 255, 255;
+  --border: 64, 64, 64;
+  --input: 23, 23, 23;
+  --ring: 64, 213, 255;
+  
+  /* Gray scale */
+  --gray-50: 250, 250, 250;
+  --gray-100: 229, 229, 229;
+  --gray-200: 212, 212, 212;
+  --gray-300: 163, 163, 163;
+  --gray-400: 115, 115, 115;
+  --gray-500: 82, 82, 82;
+  --gray-600: 54, 54, 54;
+  --gray-700: 38, 38, 38;
+  --gray-800: 23, 23, 23;
+  --gray-900: 12, 12, 12;
+
+  --border-radius: 0px; /* No rounded corners for brutalist design */
+  --border-width: 1px;
+  --grid-gap: 1px;
+}
+
+/* Basic styling */
+@layer base {
+  html, body {
+    background-color: black;
+    color: white;
+    font-family: var(--font-jetbrains), monospace;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    text-transform: uppercase;
+    line-height: 1.2;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.75rem;
+  }
+}
+
+/* Container spacing */
+@layer components {
+  .container {
+    @apply px-4 mx-auto max-w-7xl;
+  }
+
+  .section-spacing {
+    @apply py-16 md:py-24;
+  }
+
+  /* Button Styles */
+  .btn {
+    @apply inline-flex items-center justify-center py-3 px-6 font-mono transition-colors;
+  }
+
+  .btn-primary {
+    @apply border border-white hover:bg-white hover:text-black;
+  }
+
+  .btn-secondary {
+    @apply bg-white text-black border border-white hover:bg-black hover:text-white;
+  }
+
+  .btn-outline {
+    @apply border border-white text-white hover:bg-white/10;
+  }
+
+  /* Card styles */
+  .glow-card {
+    @apply border border-white p-6 bg-black relative overflow-hidden;
+    box-shadow: 0 0 20px rgba(var(--primary), 0.1);
+  }
+
+  .glow-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, 
+      rgba(64, 213, 255, 0) 0%, 
+      rgba(64, 213, 255, 0.3) 50%, 
+      rgba(64, 213, 255, 0) 100%
+    );
+    z-index: 1;
+  }
+}
+
+/* Animations and special effects */
+@layer utilities {
+  /* Blinking text */
+  .blink {
+    animation: blink 1.5s infinite;
+    color: rgb(var(--primary));
+  }
+
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  /* Terminal style containers */
+  .terminal-box {
+    border: 1px solid white;
+    padding: 1rem;
+    color: white;
+    background-color: black;
+  }
+
+  /* Number indicators */
+  .number-indicator {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+}
+
+/* Wallet adapter overrides */
+.wallet-adapter-button {
+  font-family: var(--font-jetbrains), monospace !important;
+  text-transform: uppercase !important;
+  font-weight: 700 !important;
+  background-color: transparent !important;
+  transition: all 0.1s !important;
+}
+
+.wallet-adapter-button:hover {
+  background-color: white !important;
+  color: black !important;
+}
+
+.wallet-adapter-modal-wrapper {
+  background-color: black !important;
+  border: 1px solid white !important;
+}
+
+.wallet-adapter-modal-button-close {
+  background-color: transparent !important;
+}
+
+.wallet-adapter-modal-button-close:hover {
+  background-color: white !important;
+  color: black !important;
+}
+
+/* LAYOUT */
+
+.brutalist-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--grid-gap);
+  border: var(--border-width) solid white;
+}
+
+.brutalist-card {
+  border: var(--border-width) solid white;
+  padding: 1.5rem;
+  background: black;
+  transition: all 0.2s ease;
+}
+
+.brutalist-card:hover {
+  background: rgb(20, 20, 20);
+}
+
+/* Micro interactions */
+.hover-reveal {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+}
+
+.group:hover .hover-reveal {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Scroll snap sections */
+.snap-container {
+  @apply h-full w-full overflow-y-auto overflow-x-hidden;
+  scroll-snap-type: y mandatory;
+}
+
+.snap-section {
+  @apply min-h-screen w-full;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+/* Marquee effect */
+.marquee {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.marquee-content {
+  display: inline-block;
+  white-space: nowrap;
+  animation: marquee 40s linear infinite;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Glitch effect */
+.text-glitch {
+  position: relative;
+  display: inline-block;
+}
+
+.text-glitch::before,
+.text-glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.8;
+}
+
+.text-glitch::before {
+  animation: glitch-anim-1 2s infinite linear alternate-reverse;
+  text-shadow: 1px 0 #ff00ff;
+  clip-path: polygon(0 0, 100% 0, 100% 35%, 0 35%);
+}
+
+.text-glitch::after {
+  animation: glitch-anim-2 2.5s infinite linear alternate-reverse;
+  text-shadow: -1px 0 #00ffff;
+  clip-path: polygon(0 65%, 100% 65%, 100% 100%, 0 100%);
+}
+
+@keyframes glitch-anim-1 {
+  0% {
+    transform: translate(0);
+  }
+  20% {
+    transform: translate(-3px, 2px);
+  }
+  40% {
+    transform: translate(-3px, -2px);
+  }
+  60% {
+    transform: translate(3px, 2px);
+  }
+  80% {
+    transform: translate(3px, -2px);
+  }
+  100% {
+    transform: translate(0);
+  }
+}
+
+@keyframes glitch-anim-2 {
+  0% {
+    transform: translate(0);
+  }
+  20% {
+    transform: translate(3px, -2px);
+  }
+  40% {
+    transform: translate(3px, 2px);
+  }
+  60% {
+    transform: translate(-3px, -2px);
+  }
+  80% {
+    transform: translate(-3px, 2px);
+  }
+  100% {
+    transform: translate(0);
+  }
+}
+
+/* Form styling */
+.terminal-input {
+  @apply w-full bg-black border border-white p-4 text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-[rgb(var(--primary))] font-mono;
+}
+
+/* Remove excess padding in flex layouts */
+.flex-grow {
+  min-height: 0;
+}
+
+/* Media queries for tighter layout on smaller screens */
+@media (max-width: 768px) {
+  .container {
+    @apply px-3;
+  }
+  
+  h1 {
+    font-size: 2rem;
+  }
+  
+  .snap-section {
+    min-height: auto;
+    height: auto;
+  }
+  
+  .section-spacing {
+    @apply py-10;
+  }
+}

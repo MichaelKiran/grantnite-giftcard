@@ -1,0 +1,50 @@
+{
+  "name": "gift-card-frontend",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "build:no-lint": "DISABLE_ESLINT_PLUGIN=true next build",
+    "build:no-check": "DISABLE_ESLINT_PLUGIN=true npm run dev",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@project-serum/anchor": "^0.26.0",
+    "@react-three/drei": "^9.99.5",
+    "@react-three/fiber": "^8.15.16",
+    "@sendgrid/mail": "^8.1.5",
+    "@solana/wallet-adapter-base": "^0.9.23",
+    "@solana/wallet-adapter-phantom": "^0.9.27",
+    "@solana/wallet-adapter-react": "^0.15.35",
+    "@solana/wallet-adapter-react-ui": "^0.9.34",
+    "@solana/wallet-adapter-wallets": "^0.19.25",
+    "@solana/web3.js": "^1.89.1",
+    "@types/three": "^0.176.0",
+    "abort-controller": "^3.0.0",
+    "bn.js": "^5.2.2",
+    "borsh": "^2.0.0",
+    "bs58": "^6.0.0",
+    "event-target-shim": "^6.0.2",
+    "framer-motion": "^11.0.5",
+    "next": "^15.3.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-error-boundary": "^6.0.0",
+    "readable-stream": "^4.7.0"
+  },
+  "devDependencies": {
+    "@types/bs58": "^4.0.4",
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "autoprefixer": "^10.4.16",
+    "cssesc": "^3.0.0",
+    "eslint": "^8",
+    "eslint-config-next": "14.1.0",
+    "postcss": "^8.4.31",
+    "tailwindcss": "^3.3.5",
+    "typescript": "^5"
+  }
+}

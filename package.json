@@ -1,0 +1,13 @@
+{
+  "name": "grantnite-giftcard-root",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "gift-card-frontend"
+  ],
+  "scripts": {
+    "build": "cd gift-card-frontend && npm run build",
+    "start": "cd gift-card-frontend && npm run start",
+    "dev": "cd gift-card-frontend && npm run dev"
+  }
+} 

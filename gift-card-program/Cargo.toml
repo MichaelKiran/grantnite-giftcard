@@ -1,0 +1,23 @@
+[package]
+name = "gift-card-program"
+version = "0.1.0"
+edition = "2021"
+description = "Solana program for gift card creation and staking rewards"
+
+[dependencies]
+solana-program = "1.17.0"
+borsh = "0.10.3"
+thiserror = "1.0.56"
+spl-token = { version = "4.0.0", features = ["no-entrypoint"] }
+getrandom = { version = "0.2.12", features = ["custom"] }
+
+[lib]
+crate-type = ["cdylib", "lib"]
+
+[features]
+no-entrypoint = []
+test-bpf = []
+
+[dev-dependencies]
+solana-program-test = "1.17.0"
+solana-sdk = "1.17.0"
